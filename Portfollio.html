@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <fieldset>   
+        <legend>Candidateure</legend>
+        <label>Nom complet: 
+            <input type="text">
+        </label><br><br>
+        <label>Email:  
+            <input type="email" pattern="^(\w{3,}\@[a-zA-Z]+\.[a-z]{2,4})$ ">
+        </label><br><br>
+        <label>Portfolio:
+            <input type="url">
+        </label><br><br>
+        <label>CV:  
+            <input type="file">
+        </label><br><br>
+        <label>Experience:
+            <select>
+                <option>Debutant</option>
+                <option>2 ans</option>
+                <option>3 ans</option>
+            </select>
+        </label><br><br>
+        <label>Competences:
+            <input type="checkbox">HTML
+            <input type="checkbox">CSS
+            <input type="checkbox">JavaScript
+        </label><br><br>
+        <label>Disponible:
+            <input type="radio" name="dispo">Temps plein
+            <input type="radio" name="dispo">Temps partiel
+        </label><br><br>
+        <p>Message: </p>
+        <p><textarea></textarea></p>
+        <input type="submit">
+    </fieldset>
+</body>
+</html>

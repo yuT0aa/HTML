@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Master Digital Drawing — Clip Studio Paint Courses</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0f1724;
+      --card:#0b1220;
+      --muted:rgba(255,255,255,0.75);
+      --accent1: #c7b3ff; /* pastel purple */
+      --accent2: #9fd3ff; /* pastel blue */
+      --accent3: #ffe4b5; /* pastel warm */
+      --glass: rgba(255,255,255,0.04);
+      --radius: 14px;
+      --maxw:1100px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial;
+      background: linear-gradient(180deg, rgba(12,18,30,1) 0%, rgba(6,10,18,1) 100%);
+      color: #e6eef8;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.4;
+      padding:40px 24px;
+      display:flex;align-items:flex-start;justify-content:center;
+    }
+    .container{width:100%;max-width:var(--maxw)}
+
+    /* NAV */
+    .nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px}
+    .brand{display:flex;gap:14px;align-items:center}
+    .logo{width:52px;height:52px;border-radius:12px;background:linear-gradient(135deg,var(--accent1),var(--accent2));display:flex;align-items:center;justify-content:center;font-weight:800;color:#062032;font-family:Playfair Display}
+    .brand h1{margin:0;font-size:18px}
+    .nav .links{display:flex;gap:16px;align-items:center}
+    .btn{background:linear-gradient(90deg,var(--accent2),var(--accent1));border:none;padding:10px 14px;border-radius:10px;color:#031021;font-weight:600;cursor:pointer;box-shadow:0 6px 20px rgba(113,85,255,0.12);transition:transform .2s ease}
+    .btn:active{transform:translateY(1px)}
+    .ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px 12px;border-radius:10px;color:var(--muted)}
+
+    /* HERO */
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:28px;border-radius:18px;backdrop-filter: blur(6px);box-shadow: inset 0 1px 0 rgba(255,255,255,0.02);}
+    .hero-left{padding:18px}
+    .kicker{display:inline-block;padding:6px 10px;background:linear-gradient(90deg,var(--accent3),rgba(255,255,255,0.02));border-radius:999px;color:#082032;font-weight:700;margin-bottom:14px;font-size:13px}
+    .hero h2{font-family:Playfair Display,serif;margin:0;font-size:34px;line-height:1.02;color:linear-gradient(90deg,var(--accent1),var(--accent2))}
+    .hero p{color:var(--muted);margin-top:12px}
+    .cta-row{display:flex;gap:12px;margin-top:18px}
+    .hero-right{position:relative;padding:10px}
+    .card-art{background:linear-gradient(135deg, rgba(199,179,255,0.12), rgba(159,211,255,0.06));border-radius:14px;padding:12px;height:100%;min-height:300px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+    /* subtle brush-stroke SVG overlay */
+    .brush-orn{position:absolute;right:-40px;bottom:-20px;opacity:0.12;transform:rotate(6deg)}
+
+    /* Sections */
+    section{margin-top:28px;background:var(--card);padding:18px;border-radius:14px}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);padding:14px;border-radius:12px;min-height:120px;display:flex;flex-direction:column;gap:8px}
+    .card h3{margin:0;font-size:16px}
+    .muted{color:var(--muted);font-size:14px}
+
+    /* Gallery */
+    .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+    .thumb{border-radius:10px;min-height:110px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));display:flex;align-items:center;justify-content:center;cursor:pointer;overflow:hidden}
+
+    /* FAQ */
+    .faq-item{border-radius:10px;padding:10px;background:rgba(255,255,255,0.02);cursor:pointer}
+    .faq-q{display:flex;justify-content:space-between;align-items:center}
+    .faq-a{max-height:0;overflow:hidden;transition:max-height .28s ease;padding-top:0}
+
+    /* responsive */
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr;}
+      .grid{grid-template-columns:repeat(2,1fr)}
+      .gallery{grid-template-columns:repeat(2,1fr)}
+    }
+    @media (max-width:580px){
+      body{padding:18px}
+      .grid{grid-template-columns:1fr}
+      .gallery{grid-template-columns:1fr}
+      .nav .links{display:none}
+    }
+
+    /* tiny animations */
+    .fade{opacity:0;transform:translateY(8px);animation:fadeIn .7s ease forwards}
+    @keyframes fadeIn{to{opacity:1;transform:none}}
+    .hover-lift{transition:transform .18s ease, box-shadow .18s ease}
+    .hover-lift:hover{transform:translateY(-6px)}
+
+    /* simple lightbox */
+    .lightbox{position:fixed;inset:0;background:rgba(0,0,0,0.7);display:flex;align-items:center;justify-content:center;z-index:60;padding:24px}
+    .lightbox img{max-width:95%;max-height:85%;border-radius:10px}
+
+    /* small utilities */
+    .small{font-size:13px;color:var(--muted)}
+    .pill{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,0.02)}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav class="nav fade">
+      <div class="brand">
+        <div class="logo">CS</div>
+        <div>
+          <h1>ClipStudioLearn</h1>
+          <div class="small">Digital art courses & resources</div>
+        </div>
+      </div>
+      <div class="links">
+        <button class="ghost small">Browse</button>
+        <button class="ghost small">Gallery</button>
+        <button class="btn">Join Lessons</button>
+      </div>
+    </nav>
+
+    <header class="hero fade" id="home" aria-label="hero">
+      <div class="hero-left">
+        <div class="kicker">Beginner → Advanced</div>
+        <h2>Master Digital Drawing with Clip Studio Paint</h2>
+        <p class="muted">Practical lessons, brush workflows, downloadable assets, and friendly guided projects to help you draw confidently with Clip Studio Paint.</p>
+        <div class="cta-row">
+          <button class="btn" onclick="document.getElementById('signup').scrollIntoView({behavior:'smooth'})">Start Lessons</button>
+          <button class="ghost" onclick="document.getElementById('resources').scrollIntoView({behavior:'smooth'})">Free Resources</button>
+        </div>
+
+        <div style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap">
+          <div class="pill small">Brush presets</div>
+          <div class="pill small">Project sheets</div>
+          <div class="pill small">Video breakdowns</div>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="card-art hover-lift" role="img" aria-label="digital art mockup">
+          <!-- mock art made with gradients and svg strokes -->
+          <svg width="360" height="260" viewBox="0 0 360 260" fill="none" xmlns="http://www.w3.org/2000/svg" style="border-radius:10px;">
+            <defs>
+              <linearGradient id="g1" x1="0" x2="1" y1="0" y2="1">
+                <stop offset="0" stop-color="#9fd3ff" stop-opacity="0.9"/>
+                <stop offset="1" stop-color="#c7b3ff" stop-opacity="0.9"/>
+              </linearGradient>
+            </defs>
+            <rect x="0" y="0" width="360" height="260" rx="10" fill="url(#g1)"/>
+            <g opacity="0.22" transform="translate(18,18)">
+              <path d="M10 160 C80 40, 280 40, 350 160" stroke="#fff" stroke-width="24" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              <path d="M40 190 C110 80, 250 80, 320 190" stroke="#062032" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            </g>
+            <circle cx="58" cy="66" r="22" fill="#fff" opacity="0.08"/>
+            <g transform="translate(40,110)">
+              <rect x="0" y="0" width="270" height="86" rx="10" fill="rgba(0,0,0,0.06)"/>
+              <text x="18" y="26" fill="#fff" font-size="18" font-family="Inter, sans-serif">Character study</text>
+              <text x="18" y="48" fill="rgba(255,255,255,0.75)" font-size="12">Linework → Flat colors → Shading</text>
+            </g>
+          </svg>
+          <svg class="brush-orn" width="220" height="120" viewBox="0 0 220 120" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 60 Q60 0 120 60 T220 60" stroke="#062032" stroke-width="40" stroke-linecap="round" fill="none"/>
+          </svg>
+        </div>
+      </div>
+    </header>
+
+    <!-- Sections -->
+    <section id="courses" class="fade">
+      <h2 style="margin:0 0 12px 0">Courses & Tutorials</h2>
+      <div class="grid">
+        <div class="card hover-lift">
+          <h3>Beginner Tutorials</h3>
+          <div class="muted">Understand the UI, sketching, basic linework, and working with layers in Clip Studio Paint.</div>
+        </div>
+        <div class="card hover-lift">
+          <h3>Advanced Techniques</h3>
+          <div class="muted">Perspective, dynamic posing, complex shading, color theory, and animation basics.</div>
+        </div>
+        <div class="card hover-lift">
+          <h3>Project-Based Learning</h3>
+          <div class="muted">Follow multi-day projects (portrait, environment, comic page) with step-by-step videos.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="brushes" class="fade">
+      <h2 style="margin:0 0 12px 0">Brushes & Tools</h2>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <div class="card" style="flex:1;min-width:260px">
+          <h3>Essential Brush Pack</h3>
+          <div class="muted">Sketch, ink, texture, and blending brushes — optimized for Clip Studio Paint.</div>
+        </div>
+        <div class="card" style="width:320px">
+          <h3>Tool Guides</h3>
+          <div class="muted">How to use the ruler tool, perspective rulers, vector layers, and timeline.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="resources" class="fade">
+      <h2 style="margin:0 0 12px 0">Free Resources</h2>
+      <div class="grid">
+        <div class="card hover-lift">
+          <h3>Downloadable PSD/CLIP Files</h3>
+          <div class="muted">Starter files with layer comps and reference sheets.</div>
+        </div>
+        <div class="card hover-lift">
+          <h3>Workflow Cheatsheets</h3>
+          <div class="muted">Short printable guides: sketch → refine → color → polish.</div>
+        </div>
+        <div class="card hover-lift">
+          <h3>Recommended Workflows</h3>
+          <div class="muted">Suggested order of brushes, layer organization, and export settings for web/print.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery" class="fade">
+      <h2 style="margin:0 0 12px 0">Student Gallery</h2>
+      <div class="gallery" aria-live="polite">
+        <div class="thumb" onclick="openLightbox(1)"><img src="https://images.unsplash.com/photo-1545239351-1141bd82e8a6?q=80&w=800&auto=format&fit=crop&s=placeholder" style="width:100%;height:100%;object-fit:cover" alt="student art 1"></div>
+        <div class="thumb" onclick="openLightbox(2)"><img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=800&auto=format&fit=crop&s=placeholder" style="width:100%;height:100%;object-fit:cover" alt="student art 2"></div>
+        <div class="thumb" onclick="openLightbox(3)"><img src="https://www.awn.com/sites/default/files/styles/original/public/image/featured/1050968-clip-studio-paint-captures-hand-drawn-feel-artists-and-animators.jpg?itok=IwmfvJBU" style="width:100%;height:100%;object-fit:cover" alt="student art 3"></div>
+      </div>
+    </section>
+
+    <section id="faq" class="fade">
+      <h2 style="margin:0 0 12px 0">FAQ</h2>
+      <div style="display:grid;gap:10px">
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-q"><div><strong>Do I need a tablet?</strong></div><div class="small">+</div></div>
+          <div class="faq-a small">No — you can start with a mouse, but a tablet makes drawing smoother and more natural. We recommend a pen display or a pen tablet for pressure sensitivity.</div>
+        </div>
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-q"><div><strong>Is Clip Studio Paint required?</strong></div><div class="small">+</div></div>
+          <div class="faq-a small">Courses are built around Clip Studio, but many principles apply to other drawing apps. Free trial of CSP is available from the official site.</div>
+        </div>
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-q"><div><strong>How long are the lessons?</strong></div><div class="small">+</div></div>
+          <div class="faq-a small">Most lessons are 10–30 minutes long. Project-based courses span multiple short lessons so you can practice in small daily sessions.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="signup" class="fade" style="display:flex;gap:12px;align-items:center;justify-content:space-between">
+      <div style="flex:1">
+        <h2 style="margin:0 0 8px 0">Ready to level up your drawing?</h2>
+        <div class="muted">Join a guided course or grab the free starter pack to begin today.</div>
+      </div>
+      <div style="min-width:320px;max-width:420px">
+        <form onsubmit="event.preventDefault();alert('Thanks — this is a demo sign-up. Replace with real backend.');">
+          <input type="email" placeholder="you@domain.com" required style="width:100%;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);margin-bottom:8px;background:transparent;color:inherit">
+          <div style="display:flex;gap:8px">
+            <button class="btn" type="submit">Join Lessons</button>
+            <button class="ghost" type="button" onclick="alert('Downloading free starter pack... (demo)')">Download Starter Pack</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <footer style="margin-top:18px;display:flex;justify-content:space-between;align-items:center;gap:12px" class="small">
+      <div>© ClipStudioLearn — Tutorial mockup</div>
+      <div style="opacity:0.7">Made with care • Designed for beginners</div>
+    </footer>
+  </div>
+
+  <script>
+    // fade-in delay
+    document.querySelectorAll('.fade').forEach((el,i)=>{el.style.animationDelay=(i*80)+'ms'})
+
+    // FAQ toggle
+    function toggleFaq(el){
+      const a = el.querySelector('.faq-a');
+      const plus = el.querySelector('.faq-q .small');
+      if(a.style.maxHeight && a.style.maxHeight !== '0px'){
+        a.style.maxHeight = null; plus.textContent = '+'
+      } else {
+        a.style.maxHeight = a.scrollHeight + 'px'; plus.textContent = '–'
+      }
+    }
+
+    // lightbox demo images
+    function openLightbox(i){
+      const imgs = [
+        'https://images.unsplash.com/photo-1545239351-1141bd82e8a6?q=80&w=1600&auto=format&fit=crop&s=placeholder',
+        'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=1600&auto=format&fit=crop&s=placeholder',
+        'https://images.unsplash.com/photo-1543128639-4cb7e6fa2b0a?q=80&w=1600&auto=format&fit=crop&s=placeholder'
+      ];
+      const overlay = document.createElement('div');
+      overlay.className = 'lightbox';
+      overlay.onclick = () => overlay.remove();
+      const img = document.createElement('img'); img.src = imgs[i-1]; overlay.appendChild(img);
+      document.body.appendChild(overlay);
+    }
+
+    // small accessibility: close lightbox with ESC
+    document.addEventListener('keydown', (e)=>{ if(e.key==='Escape'){document.querySelectorAll('.lightbox').forEach(x=>x.remove())}})
+
+    // tiny progressive enhancement for gallery images lazy load
+    document.querySelectorAll('.thumb img').forEach(img=>{img.loading='lazy'})
+  </script>
+</body>
+</html>

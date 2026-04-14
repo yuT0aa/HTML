@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>رحلتي مع التصميم ثلاثي الأبعاد</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: white;
+      font-family: "Tajawal", sans-serif;
+      overflow: hidden;
+    }
+    .slide {
+      opacity: 0;
+      transform: translateY(60px) scale(0.95);
+      transition: all 1s ease;
+    }
+    .active {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+    .btn {
+      background-color: #1f4068;
+      transition: all 0.3s ease;
+    }
+    .btn:hover {
+      background-color: #533483;
+      transform: scale(1.05);
+    }
+    #slide-container {
+      background-color: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(8px);
+    }
+    .bg-img {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      opacity: 0.25;
+      transition: opacity 1s ease;
+    }
+  </style>
+</head>
+
+<body class="flex flex-col items-center justify-center min-h-screen text-center p-4">
+  <img id="bg" class="bg-img" src="" alt="Background" />
+
+  <div id="slide-container" class="max-w-3xl p-8 rounded-2xl shadow-2xl slide">
+    <h1 id="slide-title" class="text-4xl font-bold mb-4"></h1>
+    <p id="slide-content" class="text-xl leading-relaxed"></p>
+  </div>
+
+  <div class="flex gap-4 mt-8">
+    <button id="prev" class="btn px-5 py-2 rounded-xl text-lg">⬅ السابق</button>
+    <button id="next" class="btn px-5 py-2 rounded-xl text-lg">التالي ➡</button>
+  </div>
+
+  <script>
+    const slides = [
+      {
+        title: "مقدمة عن التصميم ثلاثي الأبعاد",
+        content:
+          "اخترت هذا الموضوع لأنني مهتم بكيفية تحويل الأفكار إلى مجسمات حقيقية يمكن رؤيتها من جميع الزوايا. التصميم ثلاثي الأبعاد يجمع بين الإبداع والتكنولوجيا.",
+        img: "https://images.unsplash.com/photo-1581090700227-1e37b190418e?auto=format&fit=crop&w=1200&q=80",
+      },
+      {
+        title: "ما هو التصميم ثلاثي الأبعاد؟",
+        content:
+          "هو عملية إنشاء نماذج رقمية ثلاثية الأبعاد باستخدام برامج متخصصة مثل Blender وAutodesk Maya وCinema 4D. تُستخدم هذه النماذج في الألعاب والأفلام والطباعة ثلاثية الأبعاد.",
+        img: "https://images.unsplash.com/photo-1629655686788-0f13e540df3a?auto=format&fit=crop&w=1200&q=80",
+      },
+      {
+        title: "ما تعلمته خلال 20 يومًا",
+        content:
+          "تعلمت الأساسيات مثل النمذجة والإضاءة والخامات (Materials). فهمت كيف تؤثر الزوايا والظلال على واقعية الشكل. كما شاهدت دروسًا عن تحريك الأجسام (Animation).",
+        img: "https://images.unsplash.com/photo-1612197527762-6f55aa7e6400?auto=format&fit=crop&w=1200&q=80",
+      },
+      {
+        title: "تطبيقات التصميم ثلاثي الأبعاد",
+        content:
+          "🎮 الألعاب الإلكترونية<br>🎥 صناعة الأفلام والمؤثرات البصرية<br>🏗️ الهندسة المعمارية<br>🖨️ الطباعة ثلاثية الأبعاد<br>🛍️ تصميم المنتجات والإعلانات",
+        img: "https://images.unsplash.com/photo-1593642634367-d91a135587b5?auto=format&fit=crop&w=1200&q=80",
+      },
+      {
+        title: "تجربتي الشخصية",
+        content:
+          "في كل يوم، خصصت عشر دقائق لقراءة أو مشاهدة فيديوهات خبراء في المجال. تعلمت استخدام Blender في إنشاء أشكال بسيطة مثل الكوب والمصباح. كان الأمر ممتعًا ومليئًا بالتحديات.",
+        img: "https://images.unsplash.com/photo-1607799279861-4dd421887fb3?auto=format&fit=crop&w=1200&q=80",
+      },
+      {
+        title: "الخاتمة",
+        content:
+          "التصميم ثلاثي الأبعاد هو لغة جديدة للإبداع. يساعدنا على تحويل الخيال إلى واقع رقمي ملموس. أطمح في المستقبل إلى تصميم شخصيات وأفكار خاصة بي.",
+        img: "https://images.unsplash.com/photo-1581091215367-59ab6bfa13d1?auto=format&fit=crop&w=1200&q=80",
+      },
+    ];
+
+    let currentSlide = 0;
+
+    const titleEl = document.getElementById("slide-title");
+    const contentEl = document.getElementById("slide-content");
+    const container = document.getElementById("slide-container");
+    const bg = document.getElementById("bg");
+
+    function showSlide(index) {
+      container.classList.remove("active");
+      bg.style.opacity = 0;
+      setTimeout(() => {
+        titleEl.innerHTML = slides[index].title;
+        contentEl.innerHTML = slides[index].content;
+        bg.src = slides[index].img;
+        bg.style.opacity = 0.25;
+        container.classList.add("active");
+      }, 400);
+    }
+
+    document.getElementById("next").addEventListener("click", () => {
+      currentSlide = (currentSlide + 1) % slides.length;
+      showSlide(currentSlide);
+    });
+
+    document.getElementById("prev").addEventListener("click", () => {
+      currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+      showSlide(currentSlide);
+    });
+
+    // Initialize
+    showSlide(currentSlide);
+    container.classList.add("active");
+  </script>
+</body>
+</html>
+

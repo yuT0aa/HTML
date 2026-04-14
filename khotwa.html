@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khotwa - Transform Hobbies into Professional Skills</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f9f9f9;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        h1, h2, h3 {
+            margin-bottom: 20px;
+        }
+        p {
+            margin-bottom: 20px;
+        }
+        /* Navigation */
+        nav {
+            background-color: #fff;
+            padding: 20px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #d32f2f; /* Red from logo */
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+        nav ul li {
+            margin-left: 30px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        nav ul li a:hover {
+            color: #d32f2f;
+        }
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #d32f2f 0%, #ff7043 100%); /* Red to orange gradient */
+            color: #fff;
+            padding: 150px 0 100px;
+            text-align: center;
+            margin-top: 80px; /* Account for fixed nav */
+            animation: pulse 4s infinite ease-in-out; /* Subtle background pulse */
+        }
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: fadeIn 2s ease-out forwards;
+        }
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 40px;
+            opacity: 0;
+            animation: fadeIn 2s ease-out 0.5s forwards; /* Delayed fade-in */
+        }
+        .cta-button {
+            background-color: #fff;
+            color: #d32f2f;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideUp 1.5s ease-out 1s forwards; /* Slide up with delay */
+        }
+        .cta-button:hover {
+            background-color: #f0f0f0;
+            transform: scale(1.05);
+        }
+        /* Keyframes for Animations */
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+        @keyframes slideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes pulse {
+            0%, 100% {
+                background: linear-gradient(135deg, #d32f2f 0%, #ff7043 100%);
+            }
+            50% {
+                background: linear-gradient(135deg, #e53935 0%, #ff8a65 100%); /* Slightly lighter for pulse */
+            }
+        }
+        /* Sections */
+        section {
+            padding: 80px 0;
+            background-color: #fff;
+        }
+        section:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            color: #d32f2f;
+            margin-bottom: 40px;
+        }
+        /* Services */
+        .services {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        .service {
+            text-align: center;
+            width: 30%;
+            margin-bottom: 40px;
+            transition: all 0.3s ease;
+        }
+        .service:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+        .service-icon {
+            font-size: 48px;
+            color: #d32f2f;
+            margin-bottom: 20px;
+        }
+        /* Target Audience */
+        .audience {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        .audience-card {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            width: 18%;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        .audience-card:hover {
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            transform: scale(1.05);
+        }
+        .audience-card h3 {
+            color: #d32f2f;
+        }
+        /* How It Works */
+        .how-it-works {
+            text-align: center;
+        }
+        .steps {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        .step {
+            width: 20%;
+            margin-bottom: 40px;
+            transition: all 0.3s ease;
+        }
+        .step:hover {
+            transform: translateY(-10px);
+        }
+        .step-number {
+            font-size: 48px;
+            color: #d32f2f;
+            margin-bottom: 20px;
+            transition: color 0.3s ease;
+        }
+        .step:hover .step-number {
+            color: #ff7043;
+        }
+        /* Testimonials */
+        .testimonials {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        .testimonial {
+            width: 30%;
+            margin-bottom: 40px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        .testimonial:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+        .testimonial p {
+            font-style: italic;
+        }
+        .testimonial cite {
+            font-weight: bold;
+            color: #d32f2f;
+        }
+        /* Pricing */
+        .pricing {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        .pricing-card {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            width: 30%;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        .pricing-card:hover {
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            transform: scale(1.05);
+        }
+        .pricing-card h3 {
+            color: #d32f2f;
+        }
+        .pricing-card .price {
+            font-size: 36px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        /* FAQ */
+        .faq {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .faq-item {
+            margin-bottom: 20px;
+        }
+        .faq-question {
+            background-color: #f9f9f9;
+            padding: 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        .faq-question:hover {
+            background-color: rgba(211, 47, 47, 0.1); /* Light red tint */
+        }
+        .faq-answer {
+            display: none;
+            padding: 15px;
+            background-color: #fff;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        /* Contact */
+        .contact {
+            text-align: center;
+        }
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .contact-form input, .contact-form textarea, .contact-form button {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .contact-form button {
+            background-color: #d32f2f;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        .contact-form button:hover {
+            background-color: #b71c1c;
+            transform: scale(1.05);
+        }
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+        /* Responsive */
+        @media (max-width: 768px) {
+            .services, .audience, .steps, .testimonials, .pricing {
+                flex-direction: column;
+                align-items: center;
+            }
+            .service, .audience-card, .step, .testimonial, .pricing-card {
+                width: 80%;
+            }
+            .hero h1 {
+                font-size: 36px;
+            }
+            .hero p {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div class="logo">Khotwa</div> <!-- Replace with actual logo image if available -->
+            <ul>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#audience">Audience</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#testimonials">Success Stories</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Take Your First Step Toward a Better Future</h1>
+            <p>We help you discover your passion, develop your skills, and build a clear path toward professional growth.</p>
+            <a href="#contact" class="cta-button">Start Now</a>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="container">
+            <h2 class="section-title">Our Services</h2>
+            <div class="services">
+                <div class="service">
+                    <div class="service-icon">🔍</div>
+                    <h3>Hobby Analysis & Skill Development Planning</h3>
+                    <p>Analyze your hobbies and create tailored plans to turn them into professional skills.</p>
+                </div>
+                <div class="service">
+                    <div class="service-icon">📈</div>
+                    <h3>Skill-Building Programs</h3>
+                    <p>Structured programs to elevate your skills to a professional level.</p>
+                </div>
+                <div class="service">
+                    <div class="service-icon">🗺️</div>
+                    <h3>Personalized Roadmaps & Improvement Plans</h3>
+                    <p>Get customized roadmaps for continuous growth and improvement.</p>
+                </div>
+                <div class="service">
+                    <div class="service-icon">👨‍👩‍👧‍👦</div>
+                    <h3>Consultations for Parents</h3>
+                    <p>Guidance for parents on developing their children's hobbies and talents.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="audience">
+        <div class="container">
+            <h2 class="section-title">Who We Serve</h2>
+            <div class="audience">
+                <div class="audience-card">
+                    <h3>Children</h3>
+                    <p>Helping kids explore and develop their interests.</p>
+                </div>
+                <div class="audience-card">
+                    <h3>Students</h3>
+                    <p>Guiding students toward career clarity through skills.</p>
+                </div>
+                <div class="audience-card">
+                    <h3>Young Adults</h3>
+                    <p>Supporting young adults in finding direction and growth.</p>
+                </div>
+                <div class="audience-card">
+                    <h3>Hobbyists</h3>
+                    <p>Transforming hobbies into professional opportunities.</p>
+                </div>
+                <div class="audience-card">
+                    <h3>Creatives</h3>
+                    <p>Enhancing creative skills for professional success.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="how-it-works">
+        <div class="container">
+            <h2 class="section-title">How It Works</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Discover Passions</h3>
+                    <p>Identify your true interests and hobbies.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Evaluate Skills</h3>
+                    <p>Assess your current abilities and potential.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Build a Roadmap</h3>
+                    <p>Create a personalized plan for professional growth.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Continuous Support</h3>
+                    <p>Receive ongoing guidance and improvement.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials">
+        <div class="container">
+            <h2 class="section-title">Success Stories</h2>
+            <div class="testimonials">
+                <div class="testimonial">
+                    <p>"Khotwa helped my son turn his love for drawing into a professional skill. Now he's pursuing art as a career!"</p>
+                    <cite>- Parent of a 15-year-old</cite>
+                </div>
+                <div class="testimonial">
+                    <p>"I was lost in my hobbies, but their roadmap gave me clarity. I'm now a certified graphic designer."</p>
+                    <cite>- Young Adult, 22</cite>
+                </div>
+                <div class="testimonial">
+                    <p>"The personalized plans transformed my cooking hobby into a thriving business."</p>
+                    <cite>- Hobby Chef, 35</cite>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing">
+        <div class="container">
+            <h2 class="section-title">Pricing Plans</h2>
+            <div class="pricing">
+                <div class="pricing-card">
+                    <h3>Basic</h3>
+                    <div class="price">200 DH</div>
+                    <p>Hobby analysis and basic roadmap.</p>
+                </div>
+                <div class="pricing-card">
+                    <h3>Standard</h3>
+                    <div class="price">500 DH</div>
+                    <p>Skill-building program and consultations.</p>
+                </div>
+                <div class="pricing-card">
+                    <h3>Premium</h3>
+                    <div class="price">1000 DH</div>
+                    <p>Full personalized plan with ongoing support.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="faq">
+                <div class="faq-item">
+                    <div class="faq-question">What is Khotwa?</div>
+                    <div class="faq-answer">Khotwa is an agency that helps transform hobbies into professional skills through personalized plans and guidance.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Who can benefit from your services?</div>
+                    <div class="faq-answer">Parents, children, students, young adults, hobbyists, and creatives seeking skill development.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">How long does the process take?</div>
+                    <div class="faq-answer">It varies, but most plans are designed for 3-6 months with continuous support.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Look for a Consultation</h2>
+            <div class="contact">
+                <form class="contact-form">
+                    <input type="text" name="name" placeholder="Your Name" required />
+                    <input type="email" name="email" placeholder="Your Email" required />
+                    <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        </div>

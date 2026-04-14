@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Achraf Arajoum | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #111827;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --accent: #6366f1;
+      --accent-soft: rgba(99,102,241,0.15);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(180deg, #020617, #0f172a);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    section { padding: 5rem 1.5rem; max-width: 1100px; margin: auto; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+    .hero h1 {
+      font-size: clamp(2.8rem, 6vw, 4.5rem);
+      font-weight: 800;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      color: var(--muted);
+      max-width: 600px;
+    }
+    .cta {
+      margin-top: 1.5rem;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .btn {
+      padding: 0.9rem 1.4rem;
+      border-radius: 12px;
+      font-weight: 600;
+      background: var(--accent);
+      color: white;
+      box-shadow: 0 10px 25px var(--accent-soft);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .btn.secondary {
+      background: transparent;
+      border: 1px solid #334155;
+      box-shadow: none;
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 14px 35px var(--accent-soft); }
+
+    /* SECTION TITLES */
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      font-weight: 700;
+    }
+
+    /* ABOUT */
+    .about p { max-width: 750px; color: var(--muted); }
+
+    /* SKILLS */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1.5rem;
+    }
+    .skill {
+      background: var(--card);
+      padding: 1.5rem;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      transition: transform 0.2s ease;
+    }
+    .skill:hover { transform: translateY(-5px); }
+    .skill h4 { margin-bottom: 0.5rem; }
+    .bar {
+      height: 6px;
+      background: #1f2933;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .bar span {
+      display: block;
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), #818cf8);
+    }
+
+    /* PROJECTS */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+    .project {
+      background: var(--card);
+      padding: 1.5rem;
+      border-radius: 18px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.35);
+      transition: transform 0.2s ease;
+    }
+    .project:hover { transform: translateY(-6px); }
+    .project p { color: var(--muted); margin: 0.7rem 0 1rem; }
+
+    /* TIMELINE */
+    .timeline {
+      border-left: 2px solid #334155;
+      padding-left: 2rem;
+      display: grid;
+      gap: 2rem;
+    }
+    .event h4 { font-weight: 600; }
+    .event span { color: var(--muted); font-size: 0.9rem; }
+
+    /* CONTACT */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+    form {
+      display: grid;
+      gap: 1rem;
+    }
+    input, textarea {
+      padding: 0.9rem;
+      border-radius: 12px;
+      border: none;
+      background: #020617;
+      color: var(--text);
+    }
+    textarea { resize: vertical; min-height: 120px; }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h1>Achraf Arajoum</h1>
+    <p>Creative, ambitious, and dedicated to building impactful digital solutions. A passionate technology student turning ideas into real-world projects.</p>
+    <div class="cta">
+      <a href="#projects" class="btn">View My Work</a>
+      <a href="#contact" class="btn secondary">Contact Me</a>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about">
+    <h2 class="section-title">About Me</h2>
+    <p>
+      I’m Achraf Arajoum, a 20-year-old student from Morocco driven by curiosity, discipline, and ambition. My journey began in 2024 with a strong foundation in high school physics, followed by studies at the Polydisciplinary Faculty of Ouarzazate. I am currently pursuing my education at the Higher Institute of Applied Technology in Ait Melloul.
+      <br><br>
+      I enjoy learning new technologies, solving problems, and transforming ideas into meaningful digital experiences. I believe in consistency, growth, and giving 100% dedication to everything I build.
+    </p>
+  </section>
+
+  <!-- SKILLS -->
+  <section>
+    <h2 class="section-title">Skills</h2>
+    <div class="skills-grid">
+      <div class="skill"><h4>HTML & CSS</h4><div class="bar"><span style="width:90%"></span></div></div>
+      <div class="skill"><h4>JavaScript</h4><div class="bar"><span style="width:80%"></span></div></div>
+      <div class="skill"><h4>Git & GitHub</h4><div class="bar"><span style="width:85%"></span></div></div>
+      <div class="skill"><h4>UI / UX Basics</h4><div class="bar"><span style="width:75%"></span></div></div>
+      <div class="skill"><h4>Problem Solving</h4><div class="bar"><span style="width:88%"></span></div></div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <h2 class="section-title">Projects</h2>
+    <div class="projects-grid">
+      <div class="project">
+        <h4>Project One</h4>
+        <p>A modern and responsive web project showcasing clean design and usability.</p>
+        <a href="#">View Project →</a>
+      </div>
+      <div class="project">
+        <h4>Project Two</h4>
+        <p>An interactive application focused on performance and user experience.</p>
+        <a href="#">View Project →</a>
+      </div>
+      <div class="project">
+        <h4>Project Three</h4>
+        <p>A creative concept bringing together design, motion, and functionality.</p>
+        <a href="#">View Project →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section>
+    <h2 class="section-title">Experience & Education</h2>
+    <div class="timeline">
+      <div class="event">
+        <h4>High School – Physics</h4>
+        <span>2024</span>
+        <p class="muted">Built a strong foundation in mathematics, physics, and logical thinking.</p>
+      </div>
+      <div class="event">
+        <h4>Polydisciplinary Faculty of Ouarzazate</h4>
+        <span>2024</span>
+        <p class="muted">Expanded academic knowledge and explored different scientific disciplines.</p>
+      </div>
+      <div class="event">
+        <h4>Higher Institute of Applied Technology – Ait Melloul</h4>
+        <span>Present</span>
+        <p class="muted">Currently focusing on applied technology, software development, and real-world projects.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2 class="section-title">Contact</h2>
+    <div class="contact-grid">
+      <div>
+        <p>Email: achraf.arajoum@gmail.com</p>
+        <p>Phone: +212 612 966 815</p>
+        <p>Location: Morocco</p>
+        <p>GitHub: <a href="https://github.com/yuT0aa" target="_blank">github.com/yuT0aa</a></p>
+        <p>LinkedIn: <a href="https://www.linkedin.com/in/achraf-arajoum-377198339/" target="_blank">View Profile</a></p>
+      </div>
+      <form>
+        <input type="text" placeholder="Your Name" />
+        <input type="email" placeholder="Your Email" />
+        <textarea placeholder="Your Message"></textarea>
+        <button class="btn" type="submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 Achraf Arajoum. Designed with ambition, discipline, and creativity.
+  </footer>
+
+</body>
+</html>

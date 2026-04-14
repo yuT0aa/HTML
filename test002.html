@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        body{
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333333;
+            padding: 20px;
+        }
+        form p{
+            margin-bottom: 15px;
+        }
+        textarea{
+            width: 300px;
+            height: 100px;
+        }
+        input{
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            padding: 5px;
+        }
+        button{
+            border-radius: 10px;
+            margin-right: 10px;
+        }
+        select{
+            border-radius: 10px;
+        }
+        textarea{
+            border-radius: 10px;
+        }
+        .buttons{
+            display: flex;
+            justify-content: space-between;
+            [type=submit]{
+                background-color: #2d83ca;
+                color: white;
+                border: none;
+                padding: 10px 20px;
+            }
+            [type=reset]{
+                background-color: #626262;
+                color: white;
+                border: none;
+                padding: 10px 20px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Formulaire d'Inscription</h1>
+        <form>
+            <p>Nom <br><input type="text" placeholder="Votre Nom"></p>
+            <p>Email <br><input type="email" placeholder="exemple@email.com"></p>
+            <p>Date de naissance <br><input type="date"></p>
+            <p>Ville <br><select><option>Maroc</option><option>Algerie</option><option>Tunisie</option></select></p>
+            <p>Adresse 
+                <br><textarea name="Adresse" id=""></textarea></p>
+            <p>Langues parlees <br><select name="select" id="" multiple>
+                <option value="Arabe">Arabe</option>
+                <option value="Français">Français</option>
+                <option value="Anglais">Anglais</option>
+                </select>
+            </p>
+            <p>Genre <br><input type="radio" name="genre">Homme<input type="radio" name="genre">Femme</p>
+            <p>Loisir <br><input type="checkbox">Sport <input type="checkbox">Musique <input type="checkbox">Lecture</p>
+            <div class="buttons">
+                <button type="submit">Envoyer</button>
+                <button type="reset">Reinitialiser</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

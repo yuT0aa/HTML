@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <style type="text/css">
+        header{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            color: white;
+            font-family: sans-serif;
+            background-color: #4C4F50;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            margin: 0 auto;
+            margin-top: 50px;
+            width: 80%;
+        }
+        header>div{
+            display: flex;
+            gap: 20px;
+
+        }
+        header>div>p{
+            cursor: pointer;
+        }
+        header>div>p:hover{
+            color: #0e7be9;
+        }
+        .Produits{
+            text-align: center;
+            background-color: #e9ecef;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 0 auto;
+            margin-top: 50px;
+            width: 80%;
+            align-items: center;
+            
+            
+        }
+        #produits .card{
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            margin: 0 auto;
+            margin-top: 50px;
+        }
+        #produits .card img{
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            
+        }
+        .cards{
+            display: flex;
+            justify-content:space-around;
+            align-items: center;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            margin: 0 auto;
+            margin-top: 50px;
+
+
+        }
+        footer{
+            text-align: center;
+            padding: 20px;
+            background-color: #6ba7e3;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+            margin-top: 50px;
+            width: 80%;
+
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>EcoShop</h1>
+        <div>
+            <p>Acceuil</p>
+            <p>Produits</p>
+            <p>A propos</p>
+            <p>Blog</p>
+            <p>Contact</p>
+        </div>
+    </header>
+    <div class="Produits container mt-3 p-3 ">
+        <h1>Adoptez un mode de vie plus vert</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur ea sed, temporibus ipsam facere recusandae fuga quaerat voluptas impedit in. Repellat enim excepturi vero provident aut illum aliquam nam eaque.</p>
+        <button>Decouvrez nos produits</button>
+    </div>
+    <div id="produits" class="cards container row gap-03 mt-3 p-3">
+        <div class="card col-lg-3 col-md-4 col-sm-6">
+            <img src="https://marocmaroc.ma/cdn/shop/files/Savon-Grains-de-Cedre---Soins-Corps---marocMaroc.jpg?v=1701719491&width=700" alt="">
+            <h2>Savon aux grains de cèdre</h2>
+            <p>40 DH</p>
+        </div>
+        <div class="card col-lg-3 col-md-4 col-sm-6">
+            <img src="https://marocmaroc.ma/cdn/shop/files/Savon-Grains-de-Cedre---Soins-Corps---marocMaroc.jpg?v=1701719491&width=700" alt="">
+            <h2>Savon aux grains de cèdre</h2>
+            <p>40 DH</p>
+        </div>
+        <div class="card col-lg-3 col-md-4 col-sm-6">
+            <img src="https://marocmaroc.ma/cdn/shop/files/Savon-Grains-de-Cedre---Soins-Corps---marocMaroc.jpg?v=1701719491&width=700" alt="">
+            <h2>Savon aux grains de cèdre</h2>
+            <p>40 DH</p>
+        </div>
+    </div>
+    <footer>
+        &copy;2025 EcoShop
+        <a href="www.politique.com"> Politique de confidentialite</a>
+    </footer>
+</body>
+</html>

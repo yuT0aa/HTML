@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="store.css">
+    <style type="text/css">
+        .menu{
+            list-style-type: none;
+            background-color: rgb(50, 50, 50);
+            padding: 15px;
+            color: azure;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            border-radius: 8px;
+            }
+        .menu li:hover{
+            color: rgb(204,5,17);
+            cursor: pointer;
+        }
+        .link{
+            display: flex;
+            flex-direction: column;
+        }
+        .link a:hover{
+            color: rgb(204,5,17);
+        }
+        .article{
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+            
+        }
+        .content{
+            display: flex;
+            gap: 50px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        .link{
+            width: 15%;
+        }
+        .article{
+            width: 80%;
+            gap: 20px;
+        }
+        main{
+            padding: 15px;
+            border-radius: 8px;
+            color: black;
+            width: 300px;
+        }
+        main:hover{
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+            border: solid blue;
+        }
+        .content{
+            margin-bottom: 50px;
+        }
+    </style>
+</head>
+<body>
+    <ul class="menu">
+        <li>MY STORE</li>
+    </ul>
+    <div class="content">
+        <div class="link">
+        <h2>Categories</h2>
+        <a href="#">Informatique</a>
+        <a href="#">Mobile</a>
+        <a href="#">Accessoires</a>
+        </div>
+        <div class="article">
+            <main>
+                <h3>Product 1</h3>
+                <p>Description of product 1.</p>
+                <p>Price: $100</p>
+            </main>
+            <main>
+                <h3>Product 2</h3>
+                <p>Description of product 2.</p>
+                <p>Price: $200</p>
+            </main>
+            <main>
+                <h3>Product 3</h3>
+                <p>Description of product 3.</p>
+                <p>Price: $300</p>
+            </main>
+            <main>
+                <h3>Product 4</h3>
+                <p>Description of product 4.</p>
+                <p>Price: $400</p>
+        </div>
+    </div>
+</body>
+</html>
